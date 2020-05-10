@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Equation Seesaw</title>
+
+<style>
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+input[type="text"], textarea {
+
+  background-color : #d1d1d1; 
+
+}
+
+.wrap{
+    text-align:center
+}
+.left{
+float: left;
+}
+.right{
+float: right;
+}
+.center{
+margin:0 auto;
+display:inline-block
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#left { 
+float:left;  
+} 
+
+#middle{ 
+float:left;  
+} 
+            
+#right{ 
+float:right; 
+} 
+
+</style>
+
+<script src="algebra-0.2.6.min.js"></script>
+	
+</head>
+	
+<body>
+
+<p>An unfinished project where I wanted to visually encode an equation as a seesaw. Reason being it seems like an intutive physical representation of what is occuring when one is solving an equation.</p>
+  
+<div class="box">
+<div class="wrap">
+  
+<input type="text" id="left" class="left" name="fname" value="5x+3" onclick="edit_mode()" readonly> 
+<div id="middle" class="center">=</div>
+<input type="text" id="right" class="right" name="fname" value="8" onclick="edit_mode()" readonly>
+<hr style="width:100%;height:30px;background-color:#696969;text-align:center;margin-left:10">
+
+<br><br><br><br><br>
+<button onclick="check_answer()">Evaluate</button>
+
+</div>
+</div>
+      
+<script> 
+//Make the text areas editable with a color change for indication.
+function edit_mode() {
+
+document.getElementById('left').readOnly = false;
+document.getElementById('right').readOnly = false;
+
+document.getElementById('left').style.background = '#FFFFFF';
+document.getElementById('right').style.background = '#FFFFFF';
+ 
+} 
+
+</script> 
+
+<script>
+// Store the right answer and a reference for the original equation. 
+// All variables not used
+
+var Equation = algebra.Equation;
+
+var leftside = "5x+3";
+var rightside = "8";
+
+var eq = new Equation(algebra.parse(leftside), algebra.parse(rightside));
+var answer = eq.solveFor("x");
+</script>
+
+<script></script>
+
+<script> 
+
+function check_answer() { 
+  
+// If the user has "x = 1" then color the text green to show correctness
+// Should also rotate the area back to being flat but figuring it out was a hassle
+  
+if (document.getElementById('left').value == "x" && document.getElementById('right').value == "1") {
+  document.getElementById('left').style.background = '#00ff00';
+  document.getElementById('right').style.background = '#00ff00';
+  return 0;
+}
+  
+// Only handles cases where the user does does algebra through appending without space.
+// That is going from "5x+3" to "5x+3-4"
+// This checks to see if the operation is +/- on either side and rotates accordingly
+// The last one goes the wrong way for some reason
+
+if (window.leftside == document.getElementById('left').value && window.rightside == document.getElementById('right').value) {
+  return 0;
+} else if (document.getElementById('left').value.slice(-2, -1) == "+") {
+  var rotation = -20;
+} else if (document.getElementById('right').value.slice(-2, -1) == "-"){
+  var rotation = -20;
+} else if (document.getElementById('left').value.slice(-2, -1) == "-") {
+  var rotation = 20;
+} else if (document.getElementById('right').value.slice(-2, -1) == "+"){
+  var rotation = 20;
+}
+
+// In a world where I didn't lose interest this rotation would happen gradually
+document.querySelector('.box').style.transform = `rotate(${rotation}deg)`; 
+
+// Parses the input values and updates the input boxes after simplification
+
+var Fraction = algebra.Fraction;
+var Expression = algebra.Expression;
+var Equation = algebra.Equation;
+  
+var x1 = algebra.parse(document.getElementById('left').value);
+var x2 = algebra.parse(document.getElementById('right').value);
+
+document.getElementById('left').value = x1.toString()
+document.getElementById('right').value = x2.toString()
+
+// Set the input boxes back to being non-editable with the corresponding color
+
+document.getElementById('left').readOnly = true;
+document.getElementById('right').readOnly = true;
+document.getElementById('left').style.background = '#d1d1d1';
+document.getElementById('right').style.background = '#d1d1d1';
+ 
+} 
+
+</script> 
+        
+</body>
+
+</html>

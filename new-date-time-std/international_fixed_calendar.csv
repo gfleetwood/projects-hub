@@ -1,0 +1,14 @@
+month_id,month,start,end
+1,January,01-01,01-28
+2,February,01-29,02-25
+3,March,02-26,03-25
+4,April,03-26,04-22
+5,May,04-23,05-20
+6,June,05-21,06-17
+7,Sol,06-18,07-15
+8,July,07-16,08-12
+9,August,08-13,09-09
+10,September,09-10,10-07
+11,October,10-08,11-04
+12,November,11-05,12-02
+13,December,12-03,12-30

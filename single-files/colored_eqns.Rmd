@@ -1,0 +1,47 @@
+---
+title: "Colored Equations"
+output: html_document
+header-includes:
+  - \usepackage{textcolor}
+  - \usepackage{xcolor}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+See LaTeX packages in YAML header.
+
+<br> 
+
+$\color{blue}{y} = \color{green}{m}\color{red}{x} + \color{orange}{b}$ 
+
+<br> 
+
+For every one unit change in the <span style="color:red">independent variable</span> there is a <span style="color:green">change</span> in the <span style="color:blue">dependent variable</span> plus some  <span style="color:orange">offset/bias</span> to represent the value of the dependent variable when the independent variable is zero.
+
+<br> 
+
+For example, consider a mock linear relationship between a person's weight in pounds and their height in inches. 
+
+<br> 
+
+$\color{blue}{Weight} = \color{green}{2}*\color{red}{Height} + \color{orange}{12}$ 
+
+<br> 
+
+This says that it is expected that a person's <span style="color:blue">weight</span> will increase by <span style="color:green">2 pounds</span> for every additional inch in their <span style="color:red">height</span>. If a person's height were 0 inches, then their weight would be <span style="color:orange">12 pounds</span>.
+
+From DataCamp's Bayesian course
+
+$P(\color{orange}{\theta}|\color{purple}{D}) = \frac{\color{green}{P(D|\theta)}\times \color{blue}{P(\theta})}{\color{red}{\Sigma{P(D|\theta)} \times P(\theta)}}$ 
+
+<br> 
+
+The probability of <span style="color:orange">different parameter values</span> given <span style="color:purple">some data</span> is <span style="color:green">the likelihood (The relative probability of the data given different parameter values)</span> multiplied by <span style="color:blue">the prior (The probability of different parameters before seeing the data)</span> divided by <span style="color:red">the total sum of the likelihood weighted by the prior</span>.
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+---
+title: "Star Wars Shooting 2.0"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Who Is The Best Shot In Star Wars?
+
+This is an update to a small analysis from years ago. The prompt back then was this [image](https://imgur.com/M0h29yr) on the shooting accuracy of various Star Wars characters. I applied a [less thn robust Bayesian analysis](https://github.com/gfleetwood/data-science-projects-collection/blob/master/star_wars_shooting.ipynb) to "fix" the rankings. This is my atonement. I'll use David Robinson's ebbr package to properly pick alpha and beta values for the prior before generating the posterior. 
+
+```{r}
+library(tidyverse)
+library(ebbr)
+
+characters = c('Finn', 'Padme', 'Leia', 'Chewbacca', 'Luke', 'Rey', 'Han')
+shots_fired = c(4, 13, 12, 19, 8, 13, 45)
+hits = c(4, 11, 8, 12, 5, 8, 26)
+misses = c(0, 2, 4, 7, 3, 5, 19)
+
+df_shooting <- data.frame(characters, shots_fired, hits, misses)
+df_shooting
+```
+
+And for the coup-de-grace.
+
+```{r}
+df_shooting <- df_shooting %>% add_ebb_estimate(hits, shots_fired) %>% arrange(desc(.fitted))
+df_shooting
+```
+
+Padme still comes out on top in the adjusted rankings, but that's about it. Thus ends my corrective analysis.
