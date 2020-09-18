@@ -1,0 +1,24 @@
+---
+title: "NYC Subway"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Stations not in order
+
+```{r,echo=FALSE, warning=FALSE,message=FALSE}
+library(readr)
+library(DT)
+
+df <- read_csv("https://gist.githubusercontent.com/gfleetwood/c35710d4466c40de3c95bdb411d16a31/raw/c682f96fa81dfe2ee68962c394712210bca6aa57/nyc-subway.csv")
+
+opts =  list(search = list(regex = TRUE, caseInsensitive = FALSE), pageLength = 10)
+
+datatable(df, 
+          filter = list(position = 'top', clear = FALSE),
+          options = opts)
+```
+
