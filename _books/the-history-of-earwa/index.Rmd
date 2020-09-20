@@ -1,0 +1,22 @@
+--- 
+title: "A History Of Eaerwa"
+author: ""
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "d"
+---
+
+# A History Of Eaerwa
+
+Being a guide to the history and backstory of THE SECOND APOCALYPSE series by R. Scott Bakker, comprising THE PRINCE OF NOTHING trilogy and THE ASPECT EMPEROR quartet.
+
+Words by Adam Whitehead, artwork by Jason Deem, based on the work of R. Scott Bakker
+
+```{r, echo = FALSE}
+#knitr::include_graphics("/home/gordon/workspace/current/the-history-of-earwa/assests/test.png")
+```
