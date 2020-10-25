@@ -1,5 +1,7 @@
-# Missing the correct implementation of bowl_ball_actual to be a game 
-# with user participation
+# Growing up in the West Indies we played a bootleg version of cricket using a pencil. You marked the middle of each side: 0, 1, 2, 4, 6, W, and bowled by rolling the pencil and stopping it with a finger. Whatever was written on the upturned side determined the result - no runs, some number of runs, or a wicket.
+
+# This implementation mirrors this game on the command line. Run using `Rscript cli_cricket.R` and press any button to bowl.
+# The defaults are set for five overs, four wickets, and the user bowling both innings (one per team). Setting the `user` argument of play_innings(x1...xn) can change that. The computer randomly picks a bowling outcome.
 
 library(tidyverse)
 library(keypress)
@@ -200,7 +202,7 @@ generate_teams <- function(){
   
 }
 
-overs <- 1
+overs <- 5
 user_controlled <- TRUE
 teams <- generate_teams()
 team1 <- teams["team1"]
