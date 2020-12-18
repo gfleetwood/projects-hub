@@ -4,7 +4,6 @@ void setup() {
   // Initialize the circuit playground
   Serial.begin(9600);
   CircuitPlayground.begin();
-  
 }
  
 void loop() {
