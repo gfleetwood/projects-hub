@@ -1,0 +1,38 @@
+<html>
+
+<head>
+<title>Listener</title>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+var intervalID = setInterval(update_values, 500);
+
+function update_values() {
+  $.getJSON($SCRIPT_ROOT + "/get-data",
+            function(data) {
+              //console.log(data.result)
+              $("#messages").text(data.result)
+              $("#stat").text(data.status)
+            });
+}
+</script>
+</head>
+
+<body onload="update_values();">
+
+<span id="messages">??</span>
+<script>
+document.getElementById("messages").innerHTML;
+</script>
+
+<span id="stat">##</span>
+<script>
+document.getElementById("stat").innerHTML;
+</script>
+
+</body>
+
+</html>
