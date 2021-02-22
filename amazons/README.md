@@ -1,3 +1,0 @@
-## README
-
-Game is incomplete.
