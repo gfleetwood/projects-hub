@@ -6,7 +6,8 @@ try:
 except:
     import Tkinter as tk
 
-DB = dataset.connect('test_db.db') #assume db has fields 'name' and 'url'.
+#assume db has fields 'name' and 'url'.
+DB = dataset.connect('test_db.db') 
 TABLE = DB['urls']
 DATA = []
 
