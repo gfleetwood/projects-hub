@@ -1,5 +1,5 @@
 Flask==1.0.2
-Flask-Cors==2.1.2
+Flask-Cors==3.0.9
 Flask-WTF==0.14.2
 futures==3.0.5
 html5lib==0.999999999
