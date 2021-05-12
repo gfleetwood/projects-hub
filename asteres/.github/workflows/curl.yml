@@ -1,0 +1,12 @@
+name: "Trigger Update"
+on:
+  schedule:
+  - cron: "0 */12 * * *"
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+    - name: curl
+      uses: wei/curl@master
+      with:
+        args: https://000.herokuapp.com/update
