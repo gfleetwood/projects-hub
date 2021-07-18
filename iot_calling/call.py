@@ -10,12 +10,6 @@ def alert():
   global count
 
   if count != 1: return(1)
-  
-  # sms = client.messages.create(
-  #   body = "Hello. This is a Dalek, Exterminate!",
-  #   from_ = os.environ["TWILIOPHONE"],
-  #   to = os.environ["MYPHONE"]
-  #   )
                    
   call = client.calls.create(
     twiml='<Response><Say>Hello. This is a Dalek, Exterminate!</Say></Response>',
